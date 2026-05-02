@@ -29,14 +29,19 @@ ENV/
 
 
 # File .dat của dlib
-models/dlib/
+# models/dlib/
+
 # Training data
-training/data/
+training/data/*
+!training/data/.gitkeep
+
 # Video cảnh báo tạm thời
-temp_alert/
+temp_alert/*
+!temp_alert/.gitkeep
+
 # Logs runtime
 logs/*.log
 logs/*.csv
-# File âm thanh được tạo tự động
-assets/audio/*.mp3
 
+# File âm thanh được tạo tự động
+# assets/audio/*.mp3

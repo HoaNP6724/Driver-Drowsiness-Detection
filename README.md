@@ -66,10 +66,7 @@ Driver-Drowsiness-Detection/
 pip install opencv-python numpy dlib pygame gtts supabase python-dotenv imutils scipy tflite-runtime
 ```
 
-###   2. Chuẩn bị Models & Cấu hình Cloud
-- Tải weights cho Dlib và đặt vào folder `models/dlib/`:
-  - `shape_predictor_68_face_landmarks.dat`
-  - `dlib_face_recognition_resnet_model_v1.dat`
+###   2. Chuẩn bị Cấu hình Cloud & Môi trường
 - Tạo file `.env` từ file mẫu `.env.example`:
 ```bash
 cp .env.example .env

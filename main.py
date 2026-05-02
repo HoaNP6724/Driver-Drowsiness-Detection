@@ -121,6 +121,8 @@ try:
         frame_count += 1
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
+        # [FRAME SKIPPING]: Chỉ chạy thuật toán phát hiện khuôn mặt (Face Detection) 1 lần mỗi 3 khung hình
+        # để tối ưu hiệu suất. Các khung hình bị bỏ qua sẽ dùng lại vị trí khuôn mặt cũ (cached_rects)
         if frame_count % 3 == 1 or len(cached_rects) == 0:
             rects = detector(gray, 0)
             cached_rects = rects
@@ -136,6 +138,8 @@ try:
         else:
             if len(rects) == 1:
                 driver_rect = rects[0]
+            # [FRAME SKIPPING]: Khi có nhiều khuôn mặt, chỉ chạy thuật toán trích xuất đặc trưng (Face Recognition)
+            # mỗi 30 khung hình để tìm tài xế chính vì quá trình này rất nặng và tốn tài nguyên
             elif len(rects) > 1 and frame_count % 30 == 0:
                 for r in rects:
                     shape_tmp = predictor(gray, r)
